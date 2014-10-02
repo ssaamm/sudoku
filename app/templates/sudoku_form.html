@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>{{ form.puzzle.label }}: {{ form.puzzle }}</div>
+    <div>{{ form.submit }}</div>
+</form>
+{% endblock %}
