@@ -7,10 +7,9 @@ from flask import render_template
 def index():
     form = SudokuForm()
     if form.validate_on_submit():
-        message = ""
-        if sudoku.validate(form.puzzle.data):
-            message = "Valid solution!"
-        else:
-            message = "Invalid solution"
+        message = "Sorry, that's not a valid solution"
+        board = sudoku.map_from(form.puzzle.data)
+        if sudoku.validate(board):
+            message = "Hey, that's a valid solution!"
         return render_template("message.html", message = message)
     return render_template("sudoku_form.html", form = form)
